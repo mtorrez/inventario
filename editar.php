@@ -14,37 +14,34 @@ if (isset($_GET['id'])){
     $precio = $fila['precio'];
     $stock = $fila['stock'];  
 }
+require_once('librerias/cabe.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1><?= ($id > 0) ? 'Editar' : 'Nuevo' ?> producto</h1>
-    <form action="procesa.php" method="POST">
-        <table>
-            <input type="hidden" name="id" value="<?= $id ?>">
-            <tr>
-                <td>Nombre del producto</td>
-                <td><input type="text" name="nombre" value="<?= $nombre ?>" required></td>
-            </tr>
-            <tr>
-                <td>Precio</td>
-                <td><input type="text" name="precio" value="<?= $precio ?>" size=2 required></td>
-            </tr>
-            <tr>
-                <td>Stock</td>
-                <td><input type="text" name="stock" value="<?= $stock ?>" size=2 required></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Enviar"></td>
-            </tr>
-        </table>
-    </form>
-    
-</body>
-</html>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1><?= ($id > 0) ? 'Editar' : 'Nuevo' ?> producto</h1>
+            <form action="procesa.php" method="POST">
+                <input type="hidden" name="id" value="<?= $id ?>">
+                <div class="form-group">
+                    <label>Nombre del producto</label>
+                    <input type="text" name="nombre" value="<?= $nombre ?>" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Precio</label>
+                    <input type="text" name="precio" value="<?= $precio ?>" size=2 class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Stock</label>
+                    <input type="text" name="stock" value="<?= $stock ?>" size=2 class="form-control" required>
+
+                </div>
+                <input type="submit" value="Enviar" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<?php 
+require_once('librerias/pie.php');
+?>
