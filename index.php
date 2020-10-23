@@ -6,40 +6,42 @@ $registros = array();
 while($fila = $result->fetch_array()){
     $registros[] = $fila;
 }
+
+require_once('librerias/cabe.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Listado de produtos</h1>
-    <a href="editar.php">Nuevo</a>
-    <table border="1">
-        <tr>
-            <th>No.</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <?php 
-        $conta = 0;
-        ?>
-        <?php foreach ($registros as $item): ?>
-        <tr>
-            <td><?= ++$conta ?></td>
-            <td><?= $item["nombre"] ?></td>
-            <td><?= $item["precio"] ?></td>
-            <td><?= $item["stock"] ?></td>
-            <td><a href="editar.php?id=<?= $item['id']?>">Editar</a></td>
-            <td><a href="eliminar.php?id=<?= $item["id"]?>" onclick="return(confirm('Eliminamos ??'))">Eliminar</a></td>
-        </tr>
-        <?php endforeach ?>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Listado de produtos</h1>
+            <p><a href="editar.php" class="btn btn-success">Nuevo</a></p>
+            <table class="table table-striped">
+                <tr>
+                    <th>No.</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <?php 
+                $conta = 0;
+                ?>
+                <?php foreach ($registros as $item): ?>
+                <tr>
+                    <td><?= ++$conta ?></td>
+                    <td><?= $item["nombre"] ?></td>
+                    <td><?= $item["precio"] ?></td>
+                    <td><?= $item["stock"] ?></td>
+                    <td><a href="editar.php?id=<?= $item['id']?>" class="btn btn-primary">Editar</a></td>
+                    <td><a href="eliminar.php?id=<?= $item["id"]?>" onclick="return(confirm('Eliminamos ??'))" class="btn btn-danger">Eliminar</a></td>
+                </tr>
+                <?php endforeach ?>
+            </table>
+            
+        </div>
+    </div>
+</div>
     
-</body>
-</html>
+<?php 
+require_once('librerias/pie.php');
+ ?>
