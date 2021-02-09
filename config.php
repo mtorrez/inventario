@@ -1,0 +1,4 @@
+<?php
+// Configuraciones del proyeco
+
+?>
